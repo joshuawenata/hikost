@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Budgeting">
+
+    <ImageView
+        android:id="@+id/dashboard_dashboard_ic"
+        android:layout_width="103dp"
+        android:layout_height="64dp"
+        android:src="@drawable/dashboard_ic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <ImageView
+        android:id="@+id/dashboard_budgeting_ic"
+        android:layout_width="103dp"
+        android:layout_height="64dp"
+        android:src="@drawable/budgeting_ic_active"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/dashboard_dashboard_ic" />
+
+    <ImageView
+        android:id="@+id/dashboard_saving_ic"
+        android:layout_width="103dp"
+        android:layout_height="64dp"
+        android:src="@drawable/saving_ic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/dashboard_budgeting_ic" />
+
+    <ImageView
+        android:id="@+id/dashboard_account_ic"
+        android:layout_width="103dp"
+        android:layout_height="64dp"
+        android:src="@drawable/account_ic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/dashboard_saving_ic" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
