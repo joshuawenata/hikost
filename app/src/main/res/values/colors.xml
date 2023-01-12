@@ -5,7 +5,16 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+
+<!--    HIKOST COLORS-->
+    <color name="black">#1E1E1E</color>
+    <color name="gray">#7E7E7E</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#FFDCDCBC</color>
+    <color name="primary">#3FBA73</color>
+    <color name="primary_dark">#209250</color>
+    <color name="info">#46B4CD</color>
+    <color name="warning">#FEDC00</color>
+    <color name="background">#FFFFE3</color>
+    <color name="danger">#FE6B00</color>
+
 </resources>

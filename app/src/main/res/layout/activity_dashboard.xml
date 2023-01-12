@@ -7,36 +7,11 @@
     android:background="@color/background"
     tools:context=".Dashboard">
 
-    <ImageView
-        android:id="@+id/dashboard_dashboard_ic"
-        android:layout_width="103dp"
-        android:layout_height="64dp"
-        android:src="@drawable/dashboard_ic_active"
+    <androidx.fragment.app.FragmentContainerView
+        android:name="com.example.hikost.AppBarIcon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <ImageView
-        android:id="@+id/dashboard_budgeting_ic"
-        android:layout_width="103dp"
-        android:layout_height="64dp"
-        android:src="@drawable/budgeting_ic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/dashboard_dashboard_ic" />
-
-    <ImageView
-        android:id="@+id/dashboard_saving_ic"
-        android:layout_width="103dp"
-        android:layout_height="64dp"
-        android:src="@drawable/saving_ic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/dashboard_budgeting_ic" />
-
-    <ImageView
-        android:id="@+id/dashboard_account_ic"
-        android:layout_width="103dp"
-        android:layout_height="64dp"
-        android:src="@drawable/account_ic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/dashboard_saving_ic" />
+        tools:layout="@layout/fragment_app_bar_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
