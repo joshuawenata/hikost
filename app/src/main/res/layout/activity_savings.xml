@@ -72,6 +72,7 @@
                 >
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/saving_allrecyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_mascot"
@@ -81,7 +82,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_budget"
+                    android:text="Add Saving"
                     android:textAlignment="textEnd"
                     android:fontFamily="@font/montserrat_semibold"
                     android:textSize="@dimen/sz_read"
@@ -125,7 +126,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_budget"
+                    android:text="Add Saving"
                     android:textAlignment="textEnd"
                     android:fontFamily="@font/montserrat_semibold"
                     android:textSize="@dimen/sz_read"
