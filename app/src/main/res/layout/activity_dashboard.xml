@@ -4,14 +4,400 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/white"
     tools:context=".Dashboard">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:name="com.example.hikost.AppBarIcon"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="74dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_margin="@dimen/margin_general"
+                android:padding="@dimen/padding_balance"
+                android:background="@drawable/shape_balance"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/balance"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="@dimen/sz_very_large"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dummy_price"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/sz_very_large"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_general"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/summary"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/sz_large" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/margin_general"
+                android:background="@drawable/shape_mascot"
+                android:padding="@dimen/padding_balance"
+                android:backgroundTint="@color/background"
+                >
+
+                <LinearLayout
+                    android:id="@+id/mascot_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/baseline_tag_faces_24"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="@dimen/ic_size"
+                        android:minWidth="@dimen/ic_size"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/what_does_the_mascot_say"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:layout_weight="1"
+                        android:textAlignment="textEnd"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/expenses"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="@dimen/sz_large"
+                        android:textColor="@color/danger"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dummy_price"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textAlignment="textEnd"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/sz_large"
+                        android:textColor="@color/danger"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_general"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/expenses_details"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/sz_large" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_margin="@dimen/margin_general"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_general"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/last_records"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/sz_large"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/margin_general"
+                android:background="@drawable/shape_mascot"
+                android:elevation="@dimen/recycler_depth"
+                android:padding="@dimen/padding_recycler"
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_mascot"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/activity_component_card_last_records" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_more"
+                    android:textAlignment="textEnd"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textSize="@dimen/sz_read"
+                    android:textColor="@color/primary"
+                    android:padding="@dimen/padding_recycler"
+                    android:layout_marginHorizontal="@dimen/padding_recycler"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:baselineAligned="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/app_bar_pad"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout="@layout/fragment_app_bar_icon" />
+        >
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:minHeight="@dimen/min_height"
+            android:onClick="intoDashboard"
+            >
+
+            <ImageView
+                android:id="@+id/ic_graph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_graph_active"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/ic_size"
+                android:minWidth="@dimen/ic_size"
+                android:scaleType="fitCenter"
+                android:padding="@dimen/ic_pad"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoDashboard"
+                android:contentDescription="@string/desc_dashboard"
+                />
+
+            <TextView
+                android:id="@+id/txt_graph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/primary_dark"
+                android:textSize="11sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoDashboard"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:clickable="true"
+            android:onClick="intoBudgeting"
+            android:minHeight="@dimen/min_height"
+            >
+
+            <ImageView
+                android:id="@+id/ic_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_filter"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/ic_size"
+                android:minWidth="@dimen/ic_size"
+                android:scaleType="fitCenter"
+                android:padding="@dimen/ic_pad"
+                android:contentDescription="@string/enter_your_kost_budgeting"
+                android:focusable="true"
+                android:clickable="true"
+                android:onClick="intoBudgeting"
+                />
+
+            <TextView
+                android:id="@+id/txt_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/budgeting"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:focusable="true"
+                android:clickable="true"
+                android:onClick="intoBudgeting"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="@dimen/zero"
+            />
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="intoSavings"
+            android:minHeight="@dimen/min_height"
+            >
+
+            <ImageView
+                android:id="@+id/ic_wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wallet"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/ic_size"
+                android:minWidth="@dimen/ic_size"
+                android:scaleType="fitCenter"
+                android:padding="@dimen/ic_pad"
+                android:contentDescription="@string/enter_your_kost_savings"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoSavings"
+                />
+
+            <TextView
+                android:id="@+id/txt_wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/savings"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoSavings"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="intoAccount"
+            android:minHeight="@dimen/min_height"
+            >
+
+            <ImageView
+                android:id="@+id/ic_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_account"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/ic_size"
+                android:minWidth="@dimen/ic_size"
+                android:scaleType="fitCenter"
+                android:padding="@dimen/ic_pad"
+                android:contentDescription="@string/enter_your_kost_account"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoAccount"
+                />
+
+            <TextView
+                android:id="@+id/txt_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/account"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoAccount"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_transac"
+        android:layout_marginBottom="-24dp"
+        app:layout_constraintBottom_toTopOf="@id/app_bar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:elevation="@dimen/med_depth"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="intoTransaction"
+        android:contentDescription="@string/enter_your_kost_transaction"
+        android:adjustViewBounds="true"
+        android:background="@drawable/shape_round"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

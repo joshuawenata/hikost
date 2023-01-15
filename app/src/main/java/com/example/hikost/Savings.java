@@ -7,18 +7,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Account extends AppCompatActivity {
+public class Savings extends AppCompatActivity {
 
+    public NestedScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_savings);
 
         initComponents();
     }
 
     public void initComponents() {
+        scrollView = findViewById(R.id.scroll_view);
     }
 
     public void intoDashboard(View view) {
@@ -30,10 +32,9 @@ public class Account extends AppCompatActivity {
         finish();
     }
     public void intoSavings(View view) {
-        startActivity(new Intent(this, Savings.class));
+        scrollView.smoothScrollTo(0,0);
+    }    public void intoAccount(View view) {
+        startActivity(new Intent(this, Account.class));
         finish();
-    }
-    public void intoAccount(View view) {
-
     }
 }

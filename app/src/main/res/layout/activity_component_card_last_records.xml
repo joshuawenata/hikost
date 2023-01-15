@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="@dimen/margin_general"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_records_title"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sz_accent"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_payment_type"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/sz_read"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_price"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/info"
+            android:textSize="@dimen/sz_accent"
+            android:textAlignment="textEnd"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_date"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/sz_read"
+            android:textAlignment="textEnd"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

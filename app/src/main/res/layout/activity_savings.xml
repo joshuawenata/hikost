@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Budgeting">
+    tools:context=".Savings">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
@@ -23,41 +23,41 @@
             >
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="@dimen/margin_general"
-            android:padding="@dimen/padding_balance"
-            android:background="@drawable/shape_balance"
-            >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_margin="@dimen/margin_general"
+                android:padding="@dimen/padding_balance"
+                android:background="@drawable/shape_balance"
+                >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/budgets"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat_bold"
-                android:textSize="@dimen/sz_very_large"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/savings"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="@dimen/sz_very_large"
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dummy_price"
-                android:fontFamily="@font/montserrat_bold"
-                android:textAlignment="textEnd"
-                android:layout_weight="1"
-                android:textSize="@dimen/sz_very_large"
-                />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dummy_price"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/sz_very_large"
+                    />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_general"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/all_budgets"
+                android:text="@string/all_savings"
                 android:textColor="@color/primary"
                 android:textSize="@dimen/sz_large" />
 
@@ -90,7 +90,7 @@
                     android:layout_marginHorizontal="@dimen/padding_recycler"
                     android:clickable="true"
                     android:focusable="true"
-                    android:onClick="intoAddBudget"
+                    android:onClick="intoAddSavings"
                     android:minHeight="@dimen/min_height"
                     />
             </LinearLayout>
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_general"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/special_budgets"
+                android:text="@string/special_savings"
                 android:textColor="@color/primary"
                 android:textSize="@dimen/sz_large" />
 
@@ -134,7 +134,7 @@
                     android:layout_marginHorizontal="@dimen/padding_recycler"
                     android:clickable="true"
                     android:focusable="true"
-                    android:onClick="intoAddBudget"
+                    android:onClick="intoAddSavings"
                     android:minHeight="@dimen/min_height"
                     />
             </LinearLayout>
@@ -154,7 +154,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
-            android:layout_width="@dimen/zero"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -196,7 +196,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="@dimen/zero"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -211,15 +211,15 @@
                 android:id="@+id/ic_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_filter_active"
+                android:src="@drawable/ic_filter"
                 android:adjustViewBounds="true"
                 android:maxWidth="@dimen/ic_size"
                 android:minWidth="@dimen/ic_size"
                 android:scaleType="fitCenter"
                 android:padding="@dimen/ic_pad"
                 android:contentDescription="@string/enter_your_kost_budgeting"
-                android:focusable="true"
                 android:clickable="true"
+                android:focusable="true"
                 android:onClick="intoBudgeting"
                 />
 
@@ -229,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/budgeting"
                 android:fontFamily="@font/montserrat_semibold"
-                android:textColor="@color/primary_dark"
+                android:textColor="@color/white"
                 android:textSize="11sp"
                 android:clickable="true"
                 android:focusable="true"
@@ -238,7 +238,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="@dimen/zero"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -253,7 +253,7 @@
                 android:id="@+id/ic_wallet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_wallet"
+                android:src="@drawable/ic_wallet_active"
                 android:adjustViewBounds="true"
                 android:maxWidth="@dimen/ic_size"
                 android:minWidth="@dimen/ic_size"
@@ -271,7 +271,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/savings"
                 android:fontFamily="@font/montserrat_semibold"
-                android:textColor="@color/white"
+                android:textColor="@color/primary_dark"
                 android:textSize="11sp"
                 android:clickable="true"
                 android:focusable="true"
@@ -280,7 +280,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="@dimen/zero"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"

@@ -11,10 +11,11 @@
     <color name="gray">#7E7E7E</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#3FBA73</color>
-    <color name="primary_dark">#209250</color>
+    <color name="primary_dark">#126E39</color>
     <color name="info">#46B4CD</color>
     <color name="warning">#FEDC00</color>
     <color name="background">#FFFFE3</color>
+    <color name="background_darker">#FFFFEC</color>
     <color name="danger">#FE6B00</color>
 
 </resources>

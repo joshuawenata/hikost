@@ -7,13 +7,52 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tagline">Right Cost in yout Kost</string>
+    <string name="app_logo">app_logo</string>
+    <string name="dev_logo">dev_logo</string>
 
-<!--    month dropdown-->
+    <!--    month dropdown-->
     <string-array name="languages">
-        <item>C</item>
-        <item>C++</item>
-        <item>Java</item>
-        <item>JavaScript</item>
-        <item>VisualBasic</item>
+        <item>JAN</item>
+        <item>FEB</item>
+        <item>MAR</item>
+        <item>APR</item>
+        <item>MAY</item>
+        <item>JUNE</item>
+        <item>JUL</item>
+        <item>AUG</item>
+        <item>SEP</item>
+        <item>OCT</item>
+        <item>NOV</item>
+        <item>DEC</item>
     </string-array>
+    <string name="title_activity_nav_bar">NavBar</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="balance">Balance</string>
+    <string name="dummy_price">IDR 4.000.000</string>
+    <string name="summary">Summary</string>
+    <string name="expenses_details">Expenses Details</string>
+    <string name="last_records">Last Records</string>
+    <string name="desc_dashboard">Enter your kost dashboard</string>
+    <string name="what_does_the_mascot_say">You spent too much this month!</string>
+    <string name="expenses">Expenses</string>
+    <string name="show_more">Show more</string>
+    <string name="dummy_records_title">Dummy Records Title</string>
+    <string name="dummy_payment_type">Dummy Payment Type</string>
+    <string name="dummy_date">Dummy Date</string>
+    <string name="enter_your_kost_account">Enter your kost Account</string>
+    <string name="enter_your_kost_savings">Enter your kost Savings</string>
+    <string name="enter_your_kost_budgeting">Enter your kost Budgeting</string>
+    <string name="enter_your_kost_transaction">Enter your kost Transaction</string>
+    <string name="budgets">Budgets</string>
+    <string name="all_budgets">All Budgets</string>
+    <string name="add_budget">Add budget</string>
+    <string name="special_budgets">Special Budgets</string>
+    <string name="special_savings">Special Savings</string>
+    <string name="all_savings">All Savings</string>
+    <string name="profile">Profile</string>
+    <string name="dummy_username">Dummy Username</string>
+    <string name="dummy_name">Dummy Name</string>
+    <string name="change_profile">Change profile</string>
 </resources>

@@ -4,15 +4,301 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".Account">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/app_bar"
-        android:name="com.example.hikost.AppBarIcon"
+    <LinearLayout
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout="@layout/fragment_app_bar_icon" />
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile"
+            android:fontFamily="@font/montserrat_bold"
+            android:textAlignment="center"
+            android:textSize="@dimen/sz_very_large"
+            android:textColor="@color/primary"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_profile"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:maxWidth="100dp"
+            android:minWidth="@dimen/ic_size"
+            app:tint="@color/gray"
+            android:layout_marginVertical="@dimen/margin_general"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_general"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dummy_name"
+                android:fontFamily="@font/montserrat_bold"
+                android:textAlignment="center"
+                android:textSize="@dimen/sz_large"
+                android:textColor="@color/primary"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dummy_username"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textAlignment="center"
+                android:textSize="@dimen/sz_read"
+                android:textColor="@color/primary"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/change_profile"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textSize="@dimen/sz_accent"
+            android:textColor="@color/gray"
+            android:background="@drawable/shape_mascot"
+            android:elevation="@dimen/recycler_depth"
+            android:layout_margin="@dimen/margin_general"
+            android:padding="@dimen/padding_balance"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="intoChangeProfile"
+            android:minHeight="@dimen/min_height"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Records history"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textSize="@dimen/sz_accent"
+            android:textColor="@color/gray"
+            android:background="@drawable/shape_mascot"
+            android:elevation="@dimen/recycler_depth"
+            android:layout_margin="@dimen/margin_general"
+            android:padding="@dimen/padding_balance"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="intoRecordsHistory"
+            android:minHeight="@dimen/min_height"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log out"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textSize="@dimen/sz_accent"
+            android:textColor="@color/danger"
+            android:background="@drawable/shape_mascot"
+            android:elevation="@dimen/recycler_depth"
+            android:layout_margin="@dimen/margin_general"
+            android:padding="@dimen/padding_balance"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="intoRecordsHistory"
+            android:minHeight="@dimen/min_height"
+            />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:baselineAligned="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/app_bar_pad"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:minHeight="@dimen/min_height"
+            android:onClick="intoDashboard"
+            >
+
+            <ImageView
+                android:id="@+id/ic_graph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_graph"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/ic_size"
+                android:minWidth="@dimen/ic_size"
+                android:scaleType="fitCenter"
+                android:padding="@dimen/ic_pad"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoDashboard"
+                android:contentDescription="@string/desc_dashboard"
+                />
+
+            <TextView
+                android:id="@+id/txt_graph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoDashboard"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="intoBudgeting"
+            android:minHeight="@dimen/min_height"
+            >
+
+            <ImageView
+                android:id="@+id/ic_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_filter"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/ic_size"
+                android:minWidth="@dimen/ic_size"
+                android:scaleType="fitCenter"
+                android:padding="@dimen/ic_pad"
+                android:contentDescription="@string/enter_your_kost_budgeting"
+                android:focusable="true"
+                android:clickable="true"
+                android:onClick="intoBudgeting"
+                />
+
+            <TextView
+                android:id="@+id/txt_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/budgeting"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoBudgeting"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="intoSavings"
+            android:minHeight="@dimen/min_height"
+            >
+
+            <ImageView
+                android:id="@+id/ic_wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wallet"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/ic_size"
+                android:minWidth="@dimen/ic_size"
+                android:scaleType="fitCenter"
+                android:padding="@dimen/ic_pad"
+                android:contentDescription="@string/enter_your_kost_savings"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoSavings"
+                />
+
+            <TextView
+                android:id="@+id/txt_wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/savings"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoSavings"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="intoAccount"
+            >
+
+            <ImageView
+                android:id="@+id/ic_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_account_active"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/ic_size"
+                android:minWidth="@dimen/ic_size"
+                android:scaleType="fitCenter"
+                android:padding="@dimen/ic_pad"
+                android:contentDescription="@string/enter_your_kost_account"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoAccount"
+                />
+
+            <TextView
+                android:id="@+id/txt_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/account"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/primary_dark"
+                android:textSize="11sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="intoAccount"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

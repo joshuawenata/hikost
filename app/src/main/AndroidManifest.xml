@@ -13,26 +13,17 @@
         android:theme="@style/Theme.Hikost"
         tools:targetApi="31">
         <activity
-            android:name=".Account"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:name=".Transaction"
+            android:exported="false" />
         <activity
-            android:name=".Saving"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:name=".Account"
+            android:exported="false" />
+        <activity
+            android:name=".Savings"
+            android:exported="false" />
         <activity
             android:name=".Budgeting"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Dashboard"
             android:exported="false">
