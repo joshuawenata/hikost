@@ -78,4 +78,8 @@ public class Budgeting extends AppCompatActivity {
         startActivity(new Intent(this, Account.class));
         finish();
     }
+
+    public void intoAddBudget(View view) {
+        startActivity(new Intent(this, add_budget.class));
+    }
 }
