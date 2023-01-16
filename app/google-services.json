@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "354292192650",
+    "project_id": "hikost-2c7b6",
+    "storage_bucket": "hikost-2c7b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354292192650:android:3ca9ef5dae67bea8f5e473",
+        "android_client_info": {
+          "package_name": "com.example.hikost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354292192650-mufhsh9f8784jf7gn166c1ajhuc62kri.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLXgDn5locSv4ltdsaPjubGr-IN4rrf2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354292192650-mufhsh9f8784jf7gn166c1ajhuc62kri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
