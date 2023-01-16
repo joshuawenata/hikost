@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_general"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/all_savings"
+                android:text="Savings"
                 android:textColor="@color/primary"
                 android:textSize="@dimen/sz_large" />
 
@@ -72,6 +72,7 @@
                 >
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/saving_savingrecyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_mascot"
@@ -81,7 +82,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_budget"
+                    android:text="Add Saving"
                     android:textAlignment="textEnd"
                     android:fontFamily="@font/montserrat_semibold"
                     android:textSize="@dimen/sz_read"
@@ -116,6 +117,7 @@
                 >
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/saving_specialrecyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_mascot"
@@ -125,7 +127,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_budget"
+                    android:text="Add Saving"
                     android:textAlignment="textEnd"
                     android:fontFamily="@font/montserrat_semibold"
                     android:textSize="@dimen/sz_read"
@@ -134,7 +136,7 @@
                     android:layout_marginHorizontal="@dimen/padding_recycler"
                     android:clickable="true"
                     android:focusable="true"
-                    android:onClick="intoAddSavings"
+                    android:onClick="intoAddSpecial"
                     android:minHeight="@dimen/min_height"
                     />
             </LinearLayout>

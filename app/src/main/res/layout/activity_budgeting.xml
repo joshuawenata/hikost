@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_general"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/all_budgets"
+                android:text="Budgets"
                 android:textColor="@color/primary"
                 android:textSize="@dimen/sz_large" />
 
@@ -72,6 +72,7 @@
                 >
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/budgeting_budgetsrecyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_mascot"
@@ -116,6 +117,7 @@
                 >
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/budgeting_specialrecyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_mascot"
@@ -134,7 +136,7 @@
                     android:layout_marginHorizontal="@dimen/padding_recycler"
                     android:clickable="true"
                     android:focusable="true"
-                    android:onClick="intoAddBudget"
+                    android:onClick="intoAddSpecial"
                     android:minHeight="@dimen/min_height"
                     />
             </LinearLayout>

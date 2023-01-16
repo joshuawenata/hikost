@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "354292192650",
-    "project_id": "hikost-2c7b6",
-    "storage_bucket": "hikost-2c7b6.appspot.com"
+    "project_number": "668013573524",
+    "project_id": "projectoop-77703",
+    "storage_bucket": "projectoop-77703.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:354292192650:android:3ca9ef5dae67bea8f5e473",
+        "mobilesdk_app_id": "1:668013573524:android:8fbd818c0b2b63467e8b81",
         "android_client_info": {
           "package_name": "com.example.hikost"
         }
       },
       "oauth_client": [
         {
-          "client_id": "354292192650-mufhsh9f8784jf7gn166c1ajhuc62kri.apps.googleusercontent.com",
+          "client_id": "668013573524-6eobhr75blm0ugpa5accd2jp624dd2lp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCLXgDn5locSv4ltdsaPjubGr-IN4rrf2k"
+          "current_key": "AIzaSyCILlzsSzBbZtCX-xQRTWE_cHkvOd6vRJg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "354292192650-mufhsh9f8784jf7gn166c1ajhuc62kri.apps.googleusercontent.com",
+              "client_id": "668013573524-6eobhr75blm0ugpa5accd2jp624dd2lp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

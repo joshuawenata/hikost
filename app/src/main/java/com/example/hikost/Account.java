@@ -36,4 +36,8 @@ public class Account extends AppCompatActivity {
     public void intoAccount(View view) {
 
     }
+
+    public void intoRecordsHistory(View view) {
+
+    }
 }

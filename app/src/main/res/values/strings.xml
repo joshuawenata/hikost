@@ -30,7 +30,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="balance">Balance</string>
-    <string name="dummy_price">IDR 4.000.000</string>
+    <string name="dummy_price">4.000.000</string>
     <string name="summary">Summary</string>
     <string name="expenses_details">Expenses Details</string>
     <string name="last_records">Last Records</string>
