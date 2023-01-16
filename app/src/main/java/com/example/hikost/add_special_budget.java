@@ -8,18 +8,18 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.hikost.InsertFirebase.BudgetInsertFirebase;
-import com.example.hikost.InsertFirebase.SavingInsertFirebase;
 
-public class add_saving extends AppCompatActivity {
+public class add_special_budget extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_saving);
+        setContentView(R.layout.activity_add_special_budget);
     }
 
-    public void intoSavings(View view) {
-        startActivity(new Intent(this, Savings.class));
+
+    public void intoBudgeting(View view) {
+        startActivity(new Intent(this, Budgeting.class));
         finishAffinity();
     }
 
@@ -58,8 +58,8 @@ public class add_saving extends AppCompatActivity {
         }
 
         if(flag){
-            SavingInsertFirebase.insertSaving(title, description, Integer.valueOf(budget));
-            startActivity(new Intent(this, Savings.class));
+            BudgetInsertFirebase.insertSpecial(title, description, Integer.valueOf(budget));
+            startActivity(new Intent(this, Budgeting.class));
             finishAffinity();
         }
     }

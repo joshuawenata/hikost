@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add_saving">
+    tools:context=".add_special_saving">
 
     <LinearLayout
         android:id="@+id/label1"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/back"
-            android:text="Add Saving"
+            android:text="Add Special Saving"
             android:fontFamily="@font/montserrat_bold"
             android:textSize="@dimen/sz_very_large"
             android:textColor="@color/black"

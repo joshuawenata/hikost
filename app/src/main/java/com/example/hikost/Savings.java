@@ -26,7 +26,7 @@ public class Savings extends AppCompatActivity {
 
     public NestedScrollView scrollView;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReferenceSaving, databaseReferenceSpecial;
     Context context = this;
 
     @Override
@@ -39,22 +39,44 @@ public class Savings extends AppCompatActivity {
 
     public void initComponents() {
         scrollView = findViewById(R.id.scroll_view);
-        RecyclerView recyclerView = findViewById(R.id.saving_allrecyclerview);
+        RecyclerView savingrecyclerView = findViewById(R.id.saving_savingrecyclerview);
+        RecyclerView specialrecyclerView = findViewById(R.id.saving_specialrecyclerview);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("saving");
+        databaseReferenceSaving = firebaseDatabase.getReference("saving");
+        databaseReferenceSpecial = firebaseDatabase.getReference("specialsaving");
 
-        ArrayList<ObjectSaving> newList = new ArrayList<>();
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        ArrayList<ObjectSaving> savingList = new ArrayList<>();
+        ArrayList<ObjectSaving> specialList = new ArrayList<>();
+        databaseReferenceSaving.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    newList.add(postSnapshot.getValue(ObjectSaving.class));
+                    savingList.add(postSnapshot.getValue(ObjectSaving.class));
                 }
 
-                recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-                AdapterSaving allAdapter = new AdapterSaving(context, newList);
-                recyclerView.setAdapter(allAdapter);
+                savingrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+                AdapterSaving allAdapter = new AdapterSaving(context, savingList);
+                savingrecyclerView.setAdapter(allAdapter);
+                allAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        databaseReferenceSpecial.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    specialList.add(postSnapshot.getValue(ObjectSaving.class));
+                }
+
+                specialrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+                AdapterSaving allAdapter = new AdapterSaving(context, specialList);
+                specialrecyclerView.setAdapter(allAdapter);
                 allAdapter.notifyDataSetChanged();
             }
 
@@ -75,8 +97,17 @@ public class Savings extends AppCompatActivity {
     }
     public void intoSavings(View view) {
         scrollView.smoothScrollTo(0,0);
-    }    public void intoAccount(View view) {
+    }
+    public void intoAccount(View view) {
         startActivity(new Intent(this, Account.class));
         finish();
+    }
+
+    public void intoAddSavings(View view) {
+        startActivity(new Intent(this, add_saving.class));
+    }
+
+    public void intoAddSpecial(View view) {
+        startActivity(new Intent(this, add_special_saving.class));
     }
 }

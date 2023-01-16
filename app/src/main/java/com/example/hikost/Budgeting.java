@@ -25,7 +25,7 @@ public class Budgeting extends AppCompatActivity {
 
     public NestedScrollView scrollView;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReferenceBudget, databaseReferenceSpecial;
     Context context = this;
 
     @Override
@@ -38,22 +38,44 @@ public class Budgeting extends AppCompatActivity {
 
     public void initComponents() {
         scrollView = findViewById(R.id.scroll_view);
-        RecyclerView recyclerView = findViewById(R.id.budgeting_allrecyclerview);
+        RecyclerView budgetsrecyclerView = findViewById(R.id.budgeting_budgetsrecyclerview);
+        RecyclerView specialrecyclerView = findViewById(R.id.budgeting_specialrecyclerview);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("budget");
+        databaseReferenceBudget = firebaseDatabase.getReference("budget");
+        databaseReferenceSpecial = firebaseDatabase.getReference("specialbudget");
 
-        ArrayList<ObjectBudget> newList = new ArrayList<>();
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        ArrayList<ObjectBudget> budgetsList = new ArrayList<>();
+        ArrayList<ObjectBudget> specialList = new ArrayList<>();
+        databaseReferenceBudget.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    newList.add(postSnapshot.getValue(ObjectBudget.class));
+                    budgetsList.add(postSnapshot.getValue(ObjectBudget.class));
                 }
 
-                recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-                AdapterBudget allAdapter = new AdapterBudget(context, newList);
-                recyclerView.setAdapter(allAdapter);
+                budgetsrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+                AdapterBudget allAdapter = new AdapterBudget(context, budgetsList);
+                budgetsrecyclerView.setAdapter(allAdapter);
+                allAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        databaseReferenceSpecial.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    specialList.add(postSnapshot.getValue(ObjectBudget.class));
+                }
+
+                specialrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+                AdapterBudget allAdapter = new AdapterBudget(context, specialList);
+                specialrecyclerView.setAdapter(allAdapter);
                 allAdapter.notifyDataSetChanged();
             }
 
@@ -81,5 +103,9 @@ public class Budgeting extends AppCompatActivity {
 
     public void intoAddBudget(View view) {
         startActivity(new Intent(this, add_budget.class));
+    }
+
+    public void intoAddSpecial(View view) {
+        startActivity(new Intent(this, add_special_budget.class));
     }
 }
