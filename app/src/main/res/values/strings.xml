@@ -25,12 +25,29 @@
         <item>NOV</item>
         <item>DEC</item>
     </string-array>
+
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
+    <string-array name="state">
+        <item>Debit</item>
+        <item>Credit</item>
+    </string-array>
+
     <string name="title_activity_nav_bar">NavBar</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="balance">Balance</string>
-    <string name="dummy_price">4.000.000</string>
+    <string name="dummy_price">0</string>
     <string name="summary">Summary</string>
     <string name="expenses_details">Expenses Details</string>
     <string name="last_records">Last Records</string>
@@ -47,7 +64,7 @@
     <string name="enter_your_kost_transaction">Enter your kost Transaction</string>
     <string name="budgets">Budgets</string>
     <string name="all_budgets">All Budgets</string>
-    <string name="add_budget">Add budget</string>
+    <string name="add_budget">Add Budget</string>
     <string name="special_budgets">Special Budgets</string>
     <string name="special_savings">Special Savings</string>
     <string name="all_savings">All Savings</string>
@@ -55,4 +72,33 @@
     <string name="dummy_username">Dummy Username</string>
     <string name="dummy_name">Dummy Name</string>
     <string name="change_profile">Change profile</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="budget_title">Budget Title</string>
+    <string name="budget_description">Budget Description</string>
+    <string name="budget">Budget</string>
+    <string name="idr">Rp</string>
+
+    <string name="activity_add_title">Add %1$s</string>
+    <string name="title_label">%1$s Title</string>
+    <string name="title_label_error">Please input %1$s title!</string>
+    <string name="description_label">%1$s Description</string>
+    <string name="value_label">Your %1$s</string>
+    <string name="value_label_error">Please input %1$s value!</string>
+    <string name="submit_label">Add %1$s</string>
+    <string name="date_label">%1$s Date</string>
+    <string name="positive_value">+%1$s</string>
+    <string name="negative_value">-%1$s</string>
+
+
+    <string name="add_savings">Add Savings</string>
+    <string name="dummy_activity_title">Dummy Activity Title</string>
+    <string name="title_title">Title Title</string>
+    <string name="value_title">Value Title</string>
+    <string name="type_of_transaction">Type of Transaction</string>
+    <string name="submit_activity">Submit Activity</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+    <string name="payment_type">Payment Type</string>
+    <string name="lunch_ayam_geprek">Lunch Ayam Geprek</string>
+    <string name="category">Category</string>
 </resources>

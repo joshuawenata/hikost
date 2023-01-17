@@ -83,7 +83,9 @@ public class Dashboard extends AppCompatActivity {
     }
 
     public void intoTransaction(View view) {
-        startActivity(new Intent(this, Transaction.class));
-        finish();
+        Intent i = new Intent(this, Transaction.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.putExtra("objectLabel","Transaction");
+        startActivity(i);
     }
 }

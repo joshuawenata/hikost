@@ -42,6 +42,7 @@
                 />
 
             <TextView
+                android:id="@+id/total_value_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dummy_price"
@@ -92,10 +93,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="intoAddBudget"
-                    android:minHeight="@dimen/min_height"
                     />
             </LinearLayout>
-
 
             <TextView
                 android:layout_width="match_parent"
@@ -137,7 +136,6 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="intoAddSpecial"
-                    android:minHeight="@dimen/min_height"
                     />
             </LinearLayout>
 

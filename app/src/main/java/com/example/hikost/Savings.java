@@ -10,9 +10,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.hikost.adapter.AdapterBudget;
 import com.example.hikost.adapter.AdapterSaving;
+import com.example.hikost.obj.ObjectBudget;
 import com.example.hikost.obj.ObjectSaving;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,7 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Savings extends AppCompatActivity {
 
@@ -28,6 +32,10 @@ public class Savings extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReferenceSaving, databaseReferenceSpecial;
     Context context = this;
+
+    TextView totalValueLabel;
+
+    private Long totalValue = 0L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,9 @@ public class Savings extends AppCompatActivity {
 
     public void initComponents() {
         scrollView = findViewById(R.id.scroll_view);
+
+        totalValueLabel = findViewById(R.id.total_value_label);
+
         RecyclerView savingrecyclerView = findViewById(R.id.saving_savingrecyclerview);
         RecyclerView specialrecyclerView = findViewById(R.id.saving_specialrecyclerview);
 
@@ -51,8 +62,14 @@ public class Savings extends AppCompatActivity {
         databaseReferenceSaving.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    savingList.add(postSnapshot.getValue(ObjectSaving.class));
+                for (DataSnapshot savings : snapshot.getChildren()) {
+                    ObjectSaving currSavingsObj = savings.getValue(ObjectSaving.class);
+
+                    //to add budget to total budget
+                    totalValue += Integer.parseInt(String.valueOf(currSavingsObj.getValue()));
+
+                    //add budget object to arraylist
+                    savingList.add(currSavingsObj);
                 }
 
                 savingrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
@@ -70,14 +87,24 @@ public class Savings extends AppCompatActivity {
         databaseReferenceSpecial.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    specialList.add(postSnapshot.getValue(ObjectSaving.class));
+                for (DataSnapshot savings : snapshot.getChildren()) {
+                    ObjectSaving currSavingsObj = savings.getValue(ObjectSaving.class);
+
+                    //to add budget to total budget
+                    totalValue += Integer.parseInt(String.valueOf(currSavingsObj.getValue()));
+
+                    //add budget object to arraylist
+                    specialList.add(currSavingsObj);
                 }
 
                 specialrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                 AdapterSaving allAdapter = new AdapterSaving(context, specialList);
                 specialrecyclerView.setAdapter(allAdapter);
                 allAdapter.notifyDataSetChanged();
+
+
+                //to display total value
+                displayTotalValue(totalValue);
             }
 
             @Override
@@ -85,6 +112,14 @@ public class Savings extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void displayTotalValue(Long totalValue) {
+        Locale locale = new Locale("id", "ID");
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+        String valueWithCurrency = currencyFormatter.format(totalValue);
+
+        totalValueLabel.setText(valueWithCurrency);
     }
 
     public void intoDashboard(View view) {
@@ -104,10 +139,14 @@ public class Savings extends AppCompatActivity {
     }
 
     public void intoAddSavings(View view) {
-        startActivity(new Intent(this, add_saving.class));
+        Intent i = new Intent(this, add_saving.class);
+        i.putExtra("objectLabel","Savings");
+        startActivity(i);
     }
 
     public void intoAddSpecial(View view) {
-        startActivity(new Intent(this, add_special_saving.class));
+        Intent i = new Intent(this, add_saving.class);
+        i.putExtra("objectLabel","Special Savings");
+        startActivity(i);
     }
 }

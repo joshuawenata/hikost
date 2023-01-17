@@ -8,122 +8,139 @@
 
     <LinearLayout
         android:id="@+id/label1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_margin="@dimen/margin_general"
-        android:padding="@dimen/padding_balance"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="@dimen/padding_balance"
+        android:gravity="center_vertical"
         >
-        <ImageButton
+        <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:src="@drawable/ic_back"
-            android:layout_margin="10dp"
-            android:background="@null"
+            app:srcCompat="@drawable/ic_back"
+            app:tint="@color/primary"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:minWidth="@dimen/ic_size"
+            android:maxWidth="@dimen/ic_size"
             android:onClick="intoSavings"
             />
         <TextView
+            android:id="@+id/activity_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/back"
-            android:text="Add Saving"
-            android:fontFamily="@font/montserrat_bold"
-            android:textSize="@dimen/sz_very_large"
-            android:textColor="@color/black"
+            android:text="@string/dummy_activity_title"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textSize="@dimen/sz_large"
+            android:textColor="@color/primary"
+            android:layout_marginStart="@dimen/margin_text_next_to_icon"
+            android:textAllCaps="true"
             />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/title_label"
-        app:layout_constraintTop_toTopOf="@id/label1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="50dp"
-        android:text="Title"
-        android:fontFamily="@font/montserrat_bold"
-        android:textSize="@dimen/sz_large"
-        android:textColor="@color/black"
-        />
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/label1"
+        android:layout_margin="@dimen/margin_general"
+        android:paddingHorizontal="@dimen/padding_balance"
+        >
 
-    <EditText
-        android:id="@+id/title_input"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/title_label"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/description_label"
-        app:layout_constraintTop_toTopOf="@id/title_input"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:text="Description"
-        android:fontFamily="@font/montserrat_bold"
-        android:textSize="@dimen/sz_large"
-        android:textColor="@color/black"
-        />
+            <TextView
+                android:id="@+id/title_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_title"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="@dimen/sz_large"
+                android:textColor="@color/primary"
+                />
 
-    <EditText
-        android:id="@+id/description_input"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/description_label"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
-        />
+            <EditText
+                android:id="@+id/title_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/title_label"
+                android:fontFamily="@font/montserrat_regular"
+                android:inputType="textCapWords"
+                />
 
-    <TextView
-        android:id="@+id/budget_label"
-        app:layout_constraintTop_toTopOf="@id/description_input"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:text="Saving balance"
-        android:fontFamily="@font/montserrat_bold"
-        android:textSize="@dimen/sz_large"
-        android:textColor="@color/black"
-        />
+            <TextView
+                android:id="@+id/description_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description Title"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="@dimen/sz_large"
+                android:textColor="@color/primary"
+                />
 
-    <EditText
-        android:id="@+id/budget_input"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/budget_label"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
-        />
+            <EditText
+                android:id="@+id/description_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/title_label"
+                android:fontFamily="@font/montserrat_regular"
+                android:inputType="textCapSentences"
+                />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="Add Saving"
-        android:layout_marginBottom="50dp"
-        android:textColor="@color/white"
-        android:onClick="submit"
-        />
+            <TextView
+                android:id="@+id/value_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/value_title"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="@dimen/sz_large"
+                android:textColor="@color/primary"
+                />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/idr"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textSize="@dimen/sz_large"
+                    android:textColor="@color/gray"
+                    android:layout_marginEnd="2dp"/>
+
+                <EditText
+                    android:id="@+id/budget_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/title_label"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:inputType="numberDecimal"
+                    />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="submit"
+                android:text="Submit Activity"
+                android:textColor="@color/white"
+                android:layout_margin="@dimen/margin_general"
+                android:fontFamily="@font/montserrat_semibold"
+                />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@ package com.example.hikost.obj;
 public class ObjectBudget {
     protected String title;
     protected String description;
-    protected Integer value;
+    protected Long value;
 
     public String getTitle() {
         return title;
@@ -13,11 +13,11 @@ public class ObjectBudget {
         this.title = title;
     }
 
-    public Integer getValue() {
+    public Long getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Long value) {
         this.value = value;
     }
 

@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hikost.R;
 import com.example.hikost.obj.ObjectBudget;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class AdapterBudget extends RecyclerView.Adapter<AdapterBudget.ViewHolder>{
     Context context;
@@ -41,7 +43,12 @@ public class AdapterBudget extends RecyclerView.Adapter<AdapterBudget.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull AdapterBudget.ViewHolder holder, int position) {
         holder.txtTitle.setText(budgetList.get(position).getTitle());
-        holder.txtValue.setText(budgetList.get(position).getValue().toString());
+
+        long value = budgetList.get(position).getValue();
+        Locale locale = new Locale("id", "ID");
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+        String valueWithCurrency = currencyFormatter.format(value);
+        holder.txtValue.setText(valueWithCurrency);
     }
 
     @Override

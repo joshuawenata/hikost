@@ -31,25 +31,14 @@
         >
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="IDR "
-            android:fontFamily="@font/montserrat_semibold"
-            android:textColor="@color/info"
-            android:textSize="@dimen/sz_accent"
-            android:textAlignment="textEnd"
-            />
-
-        <TextView
             android:id="@+id/componentbudget_value"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dummy_price"
             android:fontFamily="@font/montserrat_semibold"
             android:textColor="@color/info"
             android:textSize="@dimen/sz_accent"
             android:textAlignment="textEnd"
-            android:layout_marginLeft="10dp"
             />
 
     </LinearLayout>

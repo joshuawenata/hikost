@@ -1,5 +1,6 @@
 package com.example.hikost;
 
+import androidx.annotation.IntegerRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
@@ -10,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.hikost.adapter.AdapterBudget;
 import com.example.hikost.obj.ObjectBudget;
@@ -19,7 +21,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Objects;
 
 public class Budgeting extends AppCompatActivity {
 
@@ -27,6 +32,10 @@ public class Budgeting extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReferenceBudget, databaseReferenceSpecial;
     Context context = this;
+
+    TextView totalValueLabel;
+
+    private Long totalValue = 0L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,9 @@ public class Budgeting extends AppCompatActivity {
 
     public void initComponents() {
         scrollView = findViewById(R.id.scroll_view);
+
+        totalValueLabel = findViewById(R.id.total_value_label);
+
         RecyclerView budgetsrecyclerView = findViewById(R.id.budgeting_budgetsrecyclerview);
         RecyclerView specialrecyclerView = findViewById(R.id.budgeting_specialrecyclerview);
 
@@ -50,8 +62,14 @@ public class Budgeting extends AppCompatActivity {
         databaseReferenceBudget.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    budgetsList.add(postSnapshot.getValue(ObjectBudget.class));
+                for (DataSnapshot budget : snapshot.getChildren()) {
+                    ObjectBudget currBudgetObj = budget.getValue(ObjectBudget.class);
+
+                    //to add budget to total budget
+                    totalValue += Integer.parseInt(String.valueOf(currBudgetObj.getValue()));
+
+                    //add budget object to arraylist
+                    budgetsList.add(currBudgetObj);
                 }
 
                 budgetsrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
@@ -69,21 +87,41 @@ public class Budgeting extends AppCompatActivity {
         databaseReferenceSpecial.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    specialList.add(postSnapshot.getValue(ObjectBudget.class));
+                for (DataSnapshot budget : snapshot.getChildren()) {
+                    ObjectBudget currBudgetObj = budget.getValue(ObjectBudget.class);
+
+                    //to add budget to total budget
+                    totalValue += Integer.parseInt(String.valueOf(currBudgetObj.getValue()));
+
+                    //add budget object to arraylist
+                    specialList.add(currBudgetObj);
                 }
 
                 specialrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                 AdapterBudget allAdapter = new AdapterBudget(context, specialList);
                 specialrecyclerView.setAdapter(allAdapter);
                 allAdapter.notifyDataSetChanged();
+
+
+                //to display total value
+                displayTotalValue(totalValue);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
+
+    }
+
+    public void displayTotalValue(Long totalValue) {
+        Locale locale = new Locale("id", "ID");
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+        String valueWithCurrency = currencyFormatter.format(totalValue);
+
+        totalValueLabel.setText(valueWithCurrency);
     }
 
     public void intoDashboard(View view) {
@@ -102,10 +140,14 @@ public class Budgeting extends AppCompatActivity {
     }
 
     public void intoAddBudget(View view) {
-        startActivity(new Intent(this, add_budget.class));
+        Intent i = new Intent(this, add_budget.class);
+        i.putExtra("objectLabel","Budget");
+        startActivity(i);
     }
 
     public void intoAddSpecial(View view) {
-        startActivity(new Intent(this, add_special_budget.class));
+        Intent i = new Intent(this, add_budget.class);
+        i.putExtra("objectLabel","Special Budget");
+        startActivity(i);
     }
 }
