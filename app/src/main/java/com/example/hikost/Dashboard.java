@@ -42,11 +42,10 @@ import java.util.Random;
 public class Dashboard extends AppCompatActivity{
     Context context = this;
     public TextView txtDashboard, txtBudgeting, txtSavings, txtAccount, totalValueLabel, incomesTotal, expensesTotal, mascotText, summaryTitle;
-    public ImageView icDashboard, icBudgeting, icSavings, icAccount, mascotView;
+    public ImageView icDashboard, icBudgeting, icSavings, icAccount, mascotView, settingsIcon;
     public NestedScrollView scrollView;
     public PieChart chart;
     private List<PieEntry> pieEntries;
-//    Typeface tf;
     private Long totalValue = 0L, totalIncome=0L, totalExpense=0L, userExpected = 1000000L;
 
     FirebaseDatabase firebaseDatabase;
@@ -159,6 +158,15 @@ public class Dashboard extends AppCompatActivity{
 
             }
         });
+
+        settingsIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Dashboard.this,Settings.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            }
+        });
     }
 
     public void displayTotalValue(Long totalValue) {
@@ -183,6 +191,7 @@ public class Dashboard extends AppCompatActivity{
         icSavings = findViewById(R.id.ic_wallet);
         icAccount = findViewById(R.id.ic_account);
         mascotView = findViewById(R.id.mascot_view);
+        settingsIcon = findViewById(R.id.settingsIcon);
 
         totalValueLabel = findViewById(R.id.total_value_label);
 
