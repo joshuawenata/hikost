@@ -28,13 +28,15 @@ import java.util.Objects;
 
 public class Budgeting extends AppCompatActivity {
     public NestedScrollView scrollView;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReferenceBudget, databaseReferenceSpecial;
+
     Context context = this;
 
     TextView totalValueLabel;
 
     private Long totalValue = 0L;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReferenceBudget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +44,12 @@ public class Budgeting extends AppCompatActivity {
         setContentView(R.layout.activity_budgeting);
 
         initComponents();
-    }
-
-    public void initComponents() {
-        scrollView = findViewById(R.id.scroll_view);
-
-        totalValueLabel = findViewById(R.id.total_value_label);
 
         RecyclerView budgetsrecyclerView = findViewById(R.id.budgeting_budgetsrecyclerview);
         RecyclerView specialrecyclerView = findViewById(R.id.budgeting_specialrecyclerview);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReferenceBudget = firebaseDatabase.getReference("budget");
-        databaseReferenceSpecial = firebaseDatabase.getReference("specialbudget");
 
         ArrayList<ObjectBudget> budgetsList = new ArrayList<>();
         ArrayList<ObjectBudget> specialList = new ArrayList<>();
@@ -64,57 +59,41 @@ public class Budgeting extends AppCompatActivity {
                 for (DataSnapshot budget : snapshot.getChildren()) {
                     ObjectBudget currBudgetObj = budget.getValue(ObjectBudget.class);
 
+                    //add budget object to arraylist
+                    if(currBudgetObj.getBudgetType().equals("Budget")){
+                        budgetsList.add(currBudgetObj);
+                    }
+                    else {
+                        specialList.add(currBudgetObj); //special budget
+                    }
+
                     //to add budget to total budget
                     totalValue += Integer.parseInt(String.valueOf(currBudgetObj.getValue()));
-
-                    //add budget object to arraylist
-                    budgetsList.add(currBudgetObj);
                 }
-
-//                budgetsrecyclerView.addOnItemTouchListener(new RecylerItem);
 
                 budgetsrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                 AdapterBudget allAdapter = new AdapterBudget(context, budgetsList);
-
                 budgetsrecyclerView.setAdapter(allAdapter);
-                allAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        databaseReferenceSpecial.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot budget : snapshot.getChildren()) {
-                    ObjectBudget currBudgetObj = budget.getValue(ObjectBudget.class);
-
-                    //to add budget to total budget
-                    totalValue += Integer.parseInt(String.valueOf(currBudgetObj.getValue()));
-
-                    //add budget object to arraylist
-                    specialList.add(currBudgetObj);
-                }
 
                 specialrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-                AdapterBudget allAdapter = new AdapterBudget(context, specialList);
-                specialrecyclerView.setAdapter(allAdapter);
+                AdapterBudget specialAdapter = new AdapterBudget(context, specialList);
+                specialrecyclerView.setAdapter(specialAdapter);
+
                 allAdapter.notifyDataSetChanged();
-
-
-                //to display total value
-                displayTotalValue(totalValue);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-
         });
+    }
+
+    public void initComponents() {
+        scrollView = findViewById(R.id.scroll_view);
+
+        totalValueLabel = findViewById(R.id.total_value_label);
+
 
     }
 

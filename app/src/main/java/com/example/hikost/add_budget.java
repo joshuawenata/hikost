@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.hikost.InsertFirebase.BudgetInsertFirebase;
+import com.example.hikost.obj.ObjectBudget;
+import com.example.hikost.obj.User;
 
 public class add_budget extends AppCompatActivity {
 
@@ -57,43 +59,31 @@ public class add_budget extends AppCompatActivity {
 
         txtTitle = findViewById(R.id.title_input);
         txtDescription = findViewById(R.id.description_input);
-        txtBudget = findViewById(R.id.budget_input);
+        txtBudget = findViewById(R.id.value_input);
 
-        String title, description, budget;
+        String title, description;
+        Long budget = 0L;
         title = txtTitle.getText().toString();
         description = txtDescription.getText().toString();
-        budget = txtBudget.getText().toString();
+        budget = Long.parseLong(txtBudget.getText().toString());
 
         boolean flag = true;
         if(title.isEmpty()){
             txtTitle.setError(getString(R.string.title_label_error,objectLabel));
             flag = false;
         }
-        else if(budget.isEmpty()){
+        else if(budget == 0){
             txtBudget.setError(getString(R.string.value_label_error,objectLabel));
             flag = false;
-        }else{
-            try
-            {
-                Integer.parseInt(budget);
-            }
-            catch (NumberFormatException e)
-            {
-                txtBudget.setError("Please input number only!");
-                flag = false;
-            }
         }
+
+        ObjectBudget budgetToPush = new ObjectBudget(title, description, objectLabel, budget, User.getUserId());
 
         if(flag){
             //TO CHECK what kind of activity to push into Firebase
-            if(objectLabel.equals("Budget")) {
-                    BudgetInsertFirebase.insertBudget(title, description, Integer.valueOf(budget));
-                    startActivity(new Intent(this, Budgeting.class));
-            }
-            else if (objectLabel.equals("Special Budget")) {
-                    BudgetInsertFirebase.insertSpecial(title, description, Integer.valueOf(budget));
-                    startActivity(new Intent(this, Budgeting.class));
-            }
+            BudgetInsertFirebase.insertBudget(budgetToPush);
+            startActivity(new Intent(this, Budgeting.class));
+
             finishAffinity();
         }
     }
