@@ -44,7 +44,7 @@ public class AdapterSaving extends RecyclerView.Adapter<AdapterSaving.ViewHolder
     public void onBindViewHolder(@NonNull AdapterSaving.ViewHolder holder, int position) {
         holder.txtTitle.setText(savingList.get(position).getTitle());
 
-        int value = savingList.get(position).getValue();
+        long value = savingList.get(position).getValue();
         Locale locale = new Locale("id", "ID");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
         String valueWithCurrency = currencyFormatter.format(value);

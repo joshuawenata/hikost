@@ -1,28 +1,23 @@
 package com.example.hikost.InsertFirebase;
 
 import com.example.hikost.InsertFirebase.Model.ModelBudget;
+import com.example.hikost.obj.ObjectSaving;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.Instant;
+
 public class SavingInsertFirebase {
     private static FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private static DatabaseReference Ref = db.getReference("saving");
-    private static DatabaseReference SRef = db.getReference("specialsaving");
-    public static void insertSaving(String title, String description, Integer value){
-        String Key = Ref.push().getKey();
-        ModelBudget newBudget = new ModelBudget(Key,
-                title,
-                description,
-                value);
-        Ref.child(Key).setValue(newBudget.toMap());
-    }
+    private static DatabaseReference savingRef = db.getReference("saving");
+    public static void insertSaving(ObjectSaving objectSaving){
+        //input push time
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            long pushTime = Instant.now().getEpochSecond();
+            objectSaving.setPushTime(pushTime);
+        }
 
-    public static void insertSpecial(String title, String description, Integer value) {
-        String Key = SRef.push().getKey();
-        ModelBudget newBudget = new ModelBudget(Key,
-                title,
-                description,
-                value);
-        SRef.child(Key).setValue(newBudget.toMap());
+        String key = savingRef.push().getKey();
+        savingRef.child(key).setValue(objectSaving);
     }
 }

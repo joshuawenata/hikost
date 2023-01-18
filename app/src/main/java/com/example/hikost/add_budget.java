@@ -80,10 +80,8 @@ public class add_budget extends AppCompatActivity {
         ObjectBudget budgetToPush = new ObjectBudget(title, description, objectLabel, budget, User.getUserId());
 
         if(flag){
-            //TO CHECK what kind of activity to push into Firebase
             BudgetInsertFirebase.insertBudget(budgetToPush);
             startActivity(new Intent(this, Budgeting.class));
-
             finishAffinity();
         }
     }

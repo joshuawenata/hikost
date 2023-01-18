@@ -30,7 +30,7 @@ public class Savings extends AppCompatActivity {
 
     public NestedScrollView scrollView;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReferenceSaving, databaseReferenceSpecial;
+    DatabaseReference databaseReferenceSaving;
     Context context = this;
 
     TextView totalValueLabel;
@@ -55,7 +55,6 @@ public class Savings extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReferenceSaving = firebaseDatabase.getReference("saving");
-        databaseReferenceSpecial = firebaseDatabase.getReference("specialsaving");
 
         ArrayList<ObjectSaving> savingList = new ArrayList<>();
         ArrayList<ObjectSaving> specialList = new ArrayList<>();
@@ -65,45 +64,28 @@ public class Savings extends AppCompatActivity {
                 for (DataSnapshot savings : snapshot.getChildren()) {
                     ObjectSaving currSavingsObj = savings.getValue(ObjectSaving.class);
 
+                    //add budget object to arraylist
+                    if(currSavingsObj.getSavingType().equals("Savings")){
+                        savingList.add(currSavingsObj);
+                    }
+                    else {
+                        specialList.add(currSavingsObj); //special budget
+                    }
+
                     //to add budget to total budget
                     totalValue += Integer.parseInt(String.valueOf(currSavingsObj.getValue()));
-
-                    //add budget object to arraylist
-                    savingList.add(currSavingsObj);
                 }
 
                 savingrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                 AdapterSaving allAdapter = new AdapterSaving(context, savingList);
                 savingrecyclerView.setAdapter(allAdapter);
-                allAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        databaseReferenceSpecial.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot savings : snapshot.getChildren()) {
-                    ObjectSaving currSavingsObj = savings.getValue(ObjectSaving.class);
-
-                    //to add budget to total budget
-                    totalValue += Integer.parseInt(String.valueOf(currSavingsObj.getValue()));
-
-                    //add budget object to arraylist
-                    specialList.add(currSavingsObj);
-                }
 
                 specialrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-                AdapterSaving allAdapter = new AdapterSaving(context, specialList);
-                specialrecyclerView.setAdapter(allAdapter);
+                AdapterSaving specialAdapter = new AdapterSaving(context, specialList);
+                specialrecyclerView.setAdapter(specialAdapter);
+
                 allAdapter.notifyDataSetChanged();
 
-
-                //to display total value
                 displayTotalValue(totalValue);
             }
 

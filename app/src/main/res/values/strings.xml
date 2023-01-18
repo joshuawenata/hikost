@@ -89,8 +89,11 @@
     <string name="title_label">%1$s Title</string>
     <string name="title_label_error">Please input %1$s title!</string>
     <string name="description_label">%1$s Description</string>
+    <string name="category_label">%1$s Category</string>
     <string name="value_label">Your %1$s</string>
+    <string name="value_label_target">Your %1$s Target</string>
     <string name="value_label_error">Please input %1$s value!</string>
+    <string name="value_label_second_error">Please input %1$s target value!</string>
     <string name="submit_label">Add %1$s</string>
     <string name="date_label">%1$s Date</string>
     <string name="positive_value">+%1$s</string>

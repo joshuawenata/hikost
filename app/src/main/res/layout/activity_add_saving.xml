@@ -95,6 +95,25 @@
                 />
 
             <TextView
+                android:id="@+id/category_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description Title"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="@dimen/sz_large"
+                android:textColor="@color/primary"
+                />
+
+            <EditText
+                android:id="@+id/category_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/title_label"
+                android:fontFamily="@font/montserrat_regular"
+                android:inputType="textCapSentences"
+                />
+
+            <TextView
                 android:id="@+id/value_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,6 +140,41 @@
 
                 <EditText
                     android:id="@+id/budget_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/title_label"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:inputType="numberDecimal"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/value_label_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/value_title"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="@dimen/sz_large"
+                android:textColor="@color/primary"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/idr"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textSize="@dimen/sz_large"
+                    android:textColor="@color/gray"
+                    android:layout_marginEnd="2dp"/>
+
+                <EditText
+                    android:id="@+id/target_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="@id/title_label"

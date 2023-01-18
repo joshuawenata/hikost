@@ -1,10 +1,19 @@
 package com.example.hikost.obj;
 
 public class ObjectSaving {
-    protected String title;
-    protected String description;
-    protected Integer value;
-    protected Integer target;
+    protected String title, category, description, savingType;
+    protected Long value, pushTime, target;
+
+    public ObjectSaving() { }
+
+    public ObjectSaving(String title, String category, String description, String savingType, Long value, Long target){
+        this.title = title;
+        this.category = category;
+        this.description = description;
+        this.savingType = savingType;
+        this.value = value;
+        this.target = target;
+    }
 
     public String getTitle() {
         return title;
@@ -22,19 +31,44 @@ public class ObjectSaving {
         this.description = description;
     }
 
-    public Integer getValue() {
-        return value;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public void setValue(Integer value) {
-        this.value = value;
+    public String getCategory() {
+        return category;
     }
 
-    public Integer getTarget() {
+
+    public void setPushTime(Long pushTime) {
+        this.pushTime = pushTime;
+    }
+
+    public Long getPushTime() {
+        return pushTime;
+    }
+
+    public void setTarget(Long target) {
+        this.target = target;
+    }
+
+    public Long getTarget() {
         return target;
     }
 
-    public void setTarget(Integer target) {
-        this.target = target;
+    public void setValue(Long value) {
+        this.value = value;
+    }
+
+    public void setSavingType(String savingType) {
+        this.savingType = savingType;
+    }
+
+    public String getSavingType() {
+        return savingType;
+    }
+
+    public Long getValue() {
+        return value;
     }
 }

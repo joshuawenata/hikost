@@ -80,6 +80,8 @@ public class Budgeting extends AppCompatActivity {
                 specialrecyclerView.setAdapter(specialAdapter);
 
                 allAdapter.notifyDataSetChanged();
+
+                displayTotalValue(totalValue);
             }
 
             @Override
@@ -91,10 +93,7 @@ public class Budgeting extends AppCompatActivity {
 
     public void initComponents() {
         scrollView = findViewById(R.id.scroll_view);
-
         totalValueLabel = findViewById(R.id.total_value_label);
-
-
     }
 
     public void displayTotalValue(Long totalValue) {
