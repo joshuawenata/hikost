@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Hikost"
         tools:targetApi="31">
         <activity
+            android:name=".edit_saving"
+            android:exported="false" />
+        <activity
             android:name=".Settings"
             android:exported="false" />
         <activity
-            android:name=".EditBudget"
+            android:name=".edit_budget"
             android:exported="false" />
         <activity
             android:name=".add_saving"

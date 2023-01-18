@@ -74,17 +74,16 @@ public class AdapterSaving extends RecyclerView.Adapter<AdapterSaving.ViewHolder
                 @Override
                 public void onClick(View v) {
 //                    int position = getAdapterPosition();
-//                    ArrayList<ObjectForum> Forumlist = getForumList();
-//                    String key, username, judul, kategori, pertanyaan, date, star, path;
+//                    ArrayList<ObjectSaving> Savinglist = getSavingList();
+//                    String key, title, category, description, savingType, value, target;
 //
-//                    key = Forumlist.get(position).getKey();
-//                    username = Forumlist.get(position).getUsername();
-//                    judul = Forumlist.get(position).getJudul();
-//                    kategori = Forumlist.get(position).getKategori();
-//                    pertanyaan = Forumlist.get(position).getPertanyaan();
-//                    date = Forumlist.get(position).getDate();
-//                    star = String.valueOf(Forumlist.get(position).getStar());
-//                    path = Forumlist.get(position).getFilepath();
+//                    key = Savinglist.get(position).getKey();
+//                    title = Savinglist.get(position).getUsername();
+//                    category = Savinglist.get(position).getJudul();
+//                    description = Savinglist.get(position).getKategori();
+//                    savingType = Savinglist.get(position).getPertanyaan();
+//                    value = Savinglist.get(position).getDate();
+//                    target = String.valueOf(Savinglist.get(position).getStar());
 //
 //                    if(mListener!=null){
 //                        mListener.onItemClick(v,key,username,judul,kategori,pertanyaan,date,star,path);

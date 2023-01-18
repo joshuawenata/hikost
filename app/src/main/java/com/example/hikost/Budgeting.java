@@ -82,7 +82,7 @@ public class Budgeting extends AppCompatActivity {
 
                     @Override
                     public void onItemClick(View v) {
-                        Intent i = new Intent(Budgeting.this, add_budget.class);
+                        Intent i = new Intent(Budgeting.this, edit_budget.class);
                         i.putExtra("objectLabel","Budget");
                         startActivity(i);
                     }
@@ -106,7 +106,7 @@ public class Budgeting extends AppCompatActivity {
 
                     @Override
                     public void onItemClick(View v) {
-                        Intent i = new Intent(Budgeting.this, add_budget.class);
+                        Intent i = new Intent(Budgeting.this, edit_budget.class);
                         i.putExtra("objectLabel","Special Budget");
                         startActivity(i);
                     }
