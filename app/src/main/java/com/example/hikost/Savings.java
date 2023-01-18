@@ -87,7 +87,7 @@ public class Savings extends AppCompatActivity {
 
                     @Override
                     public void onItemClick(View v) {
-                        Intent i = new Intent(Savings.this, add_saving.class);
+                        Intent i = new Intent(Savings.this, edit_saving.class);
                         i.putExtra("objectLabel","Savings");
                         startActivity(i);
                     }
@@ -111,7 +111,7 @@ public class Savings extends AppCompatActivity {
 
                     @Override
                     public void onItemClick(View v) {
-                        Intent i = new Intent(Savings.this, add_saving.class);
+                        Intent i = new Intent(Savings.this, edit_saving.class);
                         i.putExtra("objectLabel","Special Savings");
                         startActivity(i);
                     }
