@@ -37,9 +37,16 @@
         <item>Neptune</item>
     </string-array>
 
-    <string-array name="state">
-        <item>Debit</item>
-        <item>Credit</item>
+    <string-array name="transaction_category">
+        <item>Financial Income</item>
+        <item>Food &amp; Drinks</item>
+        <item>Shopping</item>
+        <item>Housing</item>
+        <item>Transportation</item>
+        <item>Vehicle</item>
+        <item>Leisure</item>
+        <item>Life &amp; Entertainment</item>
+        <item>Investments</item>
     </string-array>
 
     <string name="title_activity_nav_bar">NavBar</string>
@@ -100,5 +107,7 @@
     <string name="expense">Expense</string>
     <string name="payment_type">Payment Type</string>
     <string name="lunch_ayam_geprek">Lunch Ayam Geprek</string>
+    <string name="uang_jajan">Uang Jajan From Mom</string>
     <string name="category">Category</string>
+    <string name="incomes">Incomes</string>
 </resources>

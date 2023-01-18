@@ -27,7 +27,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class Budgeting extends AppCompatActivity {
-
     public NestedScrollView scrollView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReferenceBudget, databaseReferenceSpecial;
@@ -72,8 +71,11 @@ public class Budgeting extends AppCompatActivity {
                     budgetsList.add(currBudgetObj);
                 }
 
+//                budgetsrecyclerView.addOnItemTouchListener(new RecylerItem);
+
                 budgetsrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                 AdapterBudget allAdapter = new AdapterBudget(context, budgetsList);
+
                 budgetsrecyclerView.setAdapter(allAdapter);
                 allAdapter.notifyDataSetChanged();
             }

@@ -116,13 +116,22 @@
                 android:textColor="@color/primary"
                 />
 
-            <EditText
-                android:id="@+id/category_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
-                android:inputType="textCapSentences"
-                />
+<!--            <EditText-->
+<!--                android:id="@+id/category_input"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/montserrat_regular"-->
+<!--                android:inputType="textCapSentences"-->
+<!--                />-->
+
+                <Spinner
+                    android:id="@+id/category_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/support_simple_spinner_dropdown_item"
+                    android:spinnerMode="dropdown"
+                    style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                    />
 
             <TextView
                 android:id="@+id/description_label"
@@ -234,19 +243,10 @@
                 android:inputType="textCapSentences"
                 />
 
-<!--            <Spinner-->
-<!--                android:id="@+id/type_of_transaction_spinner"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                tools:listitem="@layout/support_simple_spinner_dropdown_item"-->
-<!--                android:spinnerMode="dropdown"-->
-<!--                />-->
-
             <Button
                 android:id="@+id/submit_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="submit"
                 android:text="@string/submit_activity"
                 android:textColor="@color/white"
                 android:layout_margin="@dimen/margin_general"

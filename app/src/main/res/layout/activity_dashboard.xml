@@ -41,6 +41,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/total_value_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dummy_price"
@@ -52,6 +53,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/summary_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_general"
@@ -68,6 +70,7 @@
                 android:background="@drawable/shape_mascot"
                 android:padding="@dimen/padding_balance"
                 android:backgroundTint="@color/background"
+                android:elevation="@dimen/cardview_default_elevation"
                 >
 
                 <LinearLayout
@@ -79,30 +82,71 @@
                     >
 
                     <ImageView
+                        android:id="@+id/mascot_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/baseline_tag_faces_24"
                         android:adjustViewBounds="true"
-                        android:maxWidth="@dimen/ic_size"
-                        android:minWidth="@dimen/ic_size"
+                        android:maxWidth="@dimen/mascot_sz"
+                        android:minWidth="@dimen/mascot_sz"
                         android:scaleType="fitCenter"
                         android:layout_weight="1"
+                        android:src="@drawable/meme_doge_dog"
+                        android:layout_marginRight="@dimen/margin_general"
                         />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/mascot_text"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/what_does_the_mascot_say"
                         android:fontFamily="@font/montserrat_semibold"
                         android:layout_weight="1"
                         android:textAlignment="textEnd"
+                        android:textSize="@dimen/sz_very_large"
                         />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_hint"
+                    android:layout_marginVertical="@dimen/margin_general"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/incomes"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="@dimen/sz_large"
+                        android:textColor="@color/info"
+                        />
+
+                    <TextView
+                        android:id="@+id/total_income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dummy_price"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textAlignment="textEnd"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/sz_large"
+                        android:textColor="@color/info"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
                     >
 
                     <TextView
@@ -116,6 +160,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/total_expense"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/dummy_price"
@@ -133,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_general"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/expenses_details"
+                android:text="Tracker Details"
                 android:textColor="@color/primary"
                 android:textSize="@dimen/sz_large" />
 
@@ -146,7 +191,7 @@
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/chart"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="280dp"
                     android:layout_margin="@dimen/margin_general"
                     />
             </LinearLayout>
@@ -172,6 +217,7 @@
                 >
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/transaction_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_mascot"

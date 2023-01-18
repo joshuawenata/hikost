@@ -13,6 +13,7 @@
         android:layout_weight="1"
         >
         <TextView
+            android:id="@+id/records_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dummy_records_title"
@@ -20,6 +21,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/sz_accent"/>
         <TextView
+            android:id="@+id/payment_type_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dummy_payment_type"
@@ -36,6 +38,7 @@
         >
 
         <TextView
+            android:id="@+id/value_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dummy_price"
@@ -45,6 +48,7 @@
             android:textAlignment="textEnd"
             />
         <TextView
+            android:id="@+id/date_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dummy_date"

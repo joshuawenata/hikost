@@ -20,6 +20,8 @@ public class AdapterBudget extends RecyclerView.Adapter<AdapterBudget.ViewHolder
     Context context;
     ArrayList<ObjectBudget> budgetList;
 
+    private AdapterBudget.OnItemClickListener mListener;
+
     public ArrayList<ObjectBudget> getBudgetList() {
         return budgetList;
     }
@@ -31,6 +33,14 @@ public class AdapterBudget extends RecyclerView.Adapter<AdapterBudget.ViewHolder
     public AdapterBudget(Context context, ArrayList<ObjectBudget> budgetList){
         this.context = context;
         this.budgetList = budgetList;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View v, String key, String username, String judul, String kategori, String pertanyaan, String date, String star, String path);
+    }
+
+    public void setOnItemClickListener(AdapterBudget.OnItemClickListener listener){
+        mListener = listener;
     }
 
     @NonNull

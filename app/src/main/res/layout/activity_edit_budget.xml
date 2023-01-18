@@ -29,17 +29,17 @@
             android:maxWidth="@dimen/ic_size"
             android:onClick="intoBudgeting"
             />
-            <TextView
-                android:id="@+id/activity_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dummy_activity_title"
-                android:fontFamily="@font/montserrat_semibold"
-                android:textSize="@dimen/sz_large"
-                android:textColor="@color/primary"
-                android:layout_marginStart="@dimen/margin_text_next_to_icon"
-                android:textAllCaps="true"
-                />
+        <TextView
+            android:id="@+id/activity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_activity_title"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textSize="@dimen/sz_large"
+            android:textColor="@color/primary"
+            android:layout_marginStart="@dimen/margin_text_next_to_icon"
+            android:textAllCaps="true"
+            />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -138,6 +138,18 @@
                 android:textColor="@color/white"
                 android:layout_margin="@dimen/margin_general"
                 android:fontFamily="@font/montserrat_semibold"
+                />
+
+            <Button
+                android:id="@+id/delete_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="submit"
+                android:text="Delete Activity"
+                android:textColor="@color/white"
+                android:layout_margin="@dimen/margin_general"
+                android:fontFamily="@font/montserrat_semibold"
+                android:backgroundTint="@color/danger"
                 />
         </LinearLayout>
 

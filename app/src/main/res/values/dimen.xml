@@ -38,4 +38,7 @@
 <!--    0 dp-->
     <dimen name="zero">0dp</dimen>
 
+<!--    mascot size-->
+    <dimen name="mascot_sz">50dp</dimen>
+
 </resources>

@@ -16,8 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.hikost.InsertFirebase.TransactionInsertFirebase;
+import com.example.hikost.obj.ObjectTransaction;
+import com.example.hikost.obj.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,20 +30,21 @@ import java.util.Locale;
 
 public class Transaction extends AppCompatActivity {
     //objectLabel
-    String objectLabel;
+    String objectLabel, transactionType;
 
     //toggle income/expense
     MaterialButtonToggleGroup toggleGroup;
 
-//    Spinner type_of_transaction_spinner;
+    Spinner categoryInput;
 
     //calendar vars
     final Calendar myCalendar= Calendar.getInstance();
-    EditText titleInput, valueInput, datePicker;
+    EditText titleInput, valueInput, datePicker, descInput, paymentTypeInput;
     Button bttSubmit;
     ImageView bttBack;
     TextView activityLabel, titleLabel, descriptionLabel, valueLabel, dateLabel;
     LinearLayout activityHeader;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +57,22 @@ public class Transaction extends AppCompatActivity {
         bttBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+//                finish();
+                Intent i = new Intent(Transaction.this, Dashboard.class);
+                // set the new task and clear flags
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+            }
+        });
+
+        bttSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TransactionInsertFirebase.insertTransaction(getFormValues());
+                Intent i = new Intent(Transaction.this, Dashboard.class);
+                // set the new task
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
             }
         });
     }
@@ -70,8 +91,14 @@ public class Transaction extends AppCompatActivity {
         dateLabel = findViewById(R.id.date_label);
         descriptionLabel = findViewById(R.id.description_label);
         valueLabel = findViewById(R.id.value_label);
-        valueInput = findViewById(R.id.value_input);
+
+        //FIND INPUTS
         titleInput = findViewById(R.id.title_input);
+        categoryInput = findViewById(R.id.category_input);
+        descInput = findViewById(R.id.description_input);
+        datePicker = findViewById(R.id.date_picker);
+        valueInput = findViewById(R.id.value_input);
+        paymentTypeInput = findViewById(R.id.payment_type_input);
 
         activityLabel.setText(getString(R.string.activity_add_title,objectLabel));
         titleLabel.setText(getString(R.string.title_label,objectLabel));
@@ -83,13 +110,16 @@ public class Transaction extends AppCompatActivity {
         //set bttIncome as initial value
         toggleGroup.check(R.id.btt_income);
         activityHeader.setBackgroundColor(ContextCompat.getColor(Transaction.this,R.color.primary));
+        transactionType = "Income";
+        titleInput.setHint(R.string.uang_jajan);
 
-//        type_of_transaction_spinner =  findViewById(R.id.type_of_transaction_spinner);
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),R.array.state, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-//        adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-//        type_of_transaction_spinner.setAdapter(adapter);
 
-        datePicker = findViewById(R.id.date_picker);
+
+        categoryInput =  findViewById(R.id.category_input);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),R.array.transaction_category, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        categoryInput.setAdapter(adapter);
+
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -107,6 +137,21 @@ public class Transaction extends AppCompatActivity {
         });
     }
 
+    public ObjectTransaction getFormValues() {
+        ObjectTransaction transaction = new ObjectTransaction();
+
+        transaction.setUserId(User.getUserId());
+        transaction.setTransactionType(transactionType);
+        transaction.setTitle(titleInput.getText().toString());
+        transaction.setCategory(categoryInput.getSelectedItem().toString());
+        transaction.setDescription(descInput.getText().toString());
+        transaction.setDate(datePicker.getText().toString());
+        transaction.setValue(Long.parseLong(valueInput.getText().toString()));
+        transaction.setPaymentType(paymentTypeInput.getText().toString());
+
+        return transaction;
+    }
+
     public void toggleListener() {
         toggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
@@ -115,10 +160,14 @@ public class Transaction extends AppCompatActivity {
                     if (checkedId == R.id.btt_income) {
                         activityHeader.setBackgroundColor(ContextCompat.getColor(Transaction.this,R.color.primary));
                         bttSubmit.setBackgroundColor(ContextCompat.getColor(Transaction.this,R.color.primary));
+                        transactionType = "Income";
+                        titleInput.setHint(R.string.uang_jajan);
                     }
                     else if (checkedId == R.id.btt_expense) {
                         activityHeader.setBackgroundColor(ContextCompat.getColor(Transaction.this,R.color.danger));
                         bttSubmit.setBackgroundColor(ContextCompat.getColor(Transaction.this,R.color.danger));
+                        transactionType = "Expense";
+                        titleInput.setHint(R.string.lunch_ayam_geprek);
                     }
                 }
             }
