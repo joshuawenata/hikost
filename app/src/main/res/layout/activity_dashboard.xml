@@ -20,21 +20,44 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <ImageView
-                android:id="@+id/settingsIcon"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_settings"
-                app:tint="@color/gray_hint"
-                android:adjustViewBounds="true"
-                android:maxWidth="@dimen/ic_size"
-                android:minWidth="@dimen/ic_size"
-                android:scaleType="fitCenter"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_gravity="end"
-                android:layout_margin="@dimen/margin_general"
-                />
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="2"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/shape_mascot"
+                    android:backgroundTint="@color/primary"
+                    android:textAlignment="center"
+                    android:padding="@dimen/margin_general"
+                    android:text="JAN"
+                    android:layout_weight="1"
+                    />
+
+                <ImageView
+                    android:id="@+id/settingsIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/gray_hint"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="@dimen/ic_size"
+                    android:minWidth="@dimen/ic_size"
+                    android:scaleType="fitCenter"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_margin="@dimen/margin_general"
+
+                    />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

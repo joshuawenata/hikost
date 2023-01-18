@@ -163,6 +163,7 @@ public class Dashboard extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Dashboard.this,Settings.class);
+                i.putExtra("objectLabel","Settings");
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
             }

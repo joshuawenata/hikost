@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class Settings extends AppCompatActivity {
 
     LinearLayout activityHeader;
     ImageView backButton;
+    TextView activityLabel;
+    String objectLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,13 @@ public class Settings extends AppCompatActivity {
     }
 
     public void initComponents(){
+        Bundle extras = getIntent().getExtras();
+        objectLabel = extras.getString("objectLabel");
+
         activityHeader = findViewById(R.id.activity_header);
         backButton = findViewById(R.id.back);
+        activityLabel = findViewById(R.id.activity_label);
+
+        activityLabel.setText(objectLabel);
     }
 }
