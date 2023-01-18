@@ -21,7 +21,15 @@ import java.util.Locale;
 public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.ViewHolder> {
     Context context;
     ArrayList<ObjectTransaction> transactionArrayList;
+    private AdapterTransaction.OnItemClickListener mListener;
 
+    public interface OnItemClickListener{
+        void onItemClick(View v);
+    }
+
+    public void setOnItemClickListener(AdapterTransaction.OnItemClickListener listener){
+        mListener = listener;
+    }
 
     public AdapterTransaction(Context context, ArrayList<ObjectTransaction> transactionArrayList) {
         this.context = context;
@@ -70,7 +78,28 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
             paymentTypeTitle = itemView.findViewById(R.id.payment_type_title);
             valueTitle = itemView.findViewById(R.id.value_title);
             dateTitle = itemView.findViewById(R.id.date_title);
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    int position = getAdapterPosition();
+//                    ArrayList<ObjectForum> Forumlist = getForumList();
+//                    String key, username, judul, kategori, pertanyaan, date, star, path;
+//
+//                    key = Forumlist.get(position).getKey();
+//                    username = Forumlist.get(position).getUsername();
+//                    judul = Forumlist.get(position).getJudul();
+//                    kategori = Forumlist.get(position).getKategori();
+//                    pertanyaan = Forumlist.get(position).getPertanyaan();
+//                    date = Forumlist.get(position).getDate();
+//                    star = String.valueOf(Forumlist.get(position).getStar());
+//                    path = Forumlist.get(position).getFilepath();
+//
+//                    if(mListener!=null){
+//                        mListener.onItemClick(v,key,username,judul,kategori,pertanyaan,date,star,path);
+//                    }
+                      mListener.onItemClick(v);
+                }
+            });
         }
     }
 

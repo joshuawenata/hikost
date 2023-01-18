@@ -19,7 +19,15 @@ import java.util.Locale;
 public class AdapterSaving extends RecyclerView.Adapter<AdapterSaving.ViewHolder>{
     Context context;
     ArrayList<ObjectSaving> savingList;
+    private AdapterSaving.OnItemClickListener mListener;
 
+    public interface OnItemClickListener{
+        void onItemClick(View v);
+    }
+
+    public void setOnItemClickListener(AdapterSaving.OnItemClickListener listener){
+        mListener = listener;
+    }
     public ArrayList<ObjectSaving> getSavingList() {
         return savingList;
     }
@@ -62,6 +70,28 @@ public class AdapterSaving extends RecyclerView.Adapter<AdapterSaving.ViewHolder
             super(itemView);
             txtTitle = itemView.findViewById(R.id.componentbudget_title);
             txtValue = itemView.findViewById(R.id.componentbudget_value);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    int position = getAdapterPosition();
+//                    ArrayList<ObjectForum> Forumlist = getForumList();
+//                    String key, username, judul, kategori, pertanyaan, date, star, path;
+//
+//                    key = Forumlist.get(position).getKey();
+//                    username = Forumlist.get(position).getUsername();
+//                    judul = Forumlist.get(position).getJudul();
+//                    kategori = Forumlist.get(position).getKategori();
+//                    pertanyaan = Forumlist.get(position).getPertanyaan();
+//                    date = Forumlist.get(position).getDate();
+//                    star = String.valueOf(Forumlist.get(position).getStar());
+//                    path = Forumlist.get(position).getFilepath();
+//
+//                    if(mListener!=null){
+//                        mListener.onItemClick(v,key,username,judul,kategori,pertanyaan,date,star,path);
+//                    }
+                    mListener.onItemClick(v);
+                }
+            });
         }
     }
 }

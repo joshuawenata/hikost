@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.hikost.adapter.AdapterBudget;
+import com.example.hikost.adapter.AdapterSaving;
 import com.example.hikost.obj.ObjectBudget;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -73,13 +74,63 @@ public class Budgeting extends AppCompatActivity {
 
                 budgetsrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                 AdapterBudget allAdapter = new AdapterBudget(context, budgetsList);
-                budgetsrecyclerView.setAdapter(allAdapter);
 
                 specialrecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                 AdapterBudget specialAdapter = new AdapterBudget(context, specialList);
+
+                allAdapter.setOnItemClickListener(new AdapterBudget.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(View v) {
+                        Intent i = new Intent(Budgeting.this, add_budget.class);
+                        i.putExtra("objectLabel","Budget");
+                        startActivity(i);
+                    }
+
+//                    @Override
+//                    public void onItemClick(View v, String key, String username, String judul, String kategori, String pertanyaan, String date, String star, String path) {
+//                        Intent i = new Intent(HomePage.this, ForumCardPage.class);
+//                        i.putExtra("key",key);
+//                        i.putExtra("username",username);
+//                        i.putExtra("judul",judul);
+//                        i.putExtra("kategori",kategori);
+//                        i.putExtra("pertanyaan",pertanyaan);
+//                        i.putExtra("date",date);
+//                        i.putExtra("star",star);
+//                        i.putExtra("path",path);
+//                        startActivity(i);
+//                    }
+                });
+
+                specialAdapter.setOnItemClickListener(new AdapterBudget.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(View v) {
+                        Intent i = new Intent(Budgeting.this, add_budget.class);
+                        i.putExtra("objectLabel","Special Budget");
+                        startActivity(i);
+                    }
+
+//                    @Override
+//                    public void onItemClick(View v, String key, String username, String judul, String kategori, String pertanyaan, String date, String star, String path) {
+//                        Intent i = new Intent(HomePage.this, ForumCardPage.class);
+//                        i.putExtra("key",key);
+//                        i.putExtra("username",username);
+//                        i.putExtra("judul",judul);
+//                        i.putExtra("kategori",kategori);
+//                        i.putExtra("pertanyaan",pertanyaan);
+//                        i.putExtra("date",date);
+//                        i.putExtra("star",star);
+//                        i.putExtra("path",path);
+//                        startActivity(i);
+//                    }
+                });
+
+                budgetsrecyclerView.setAdapter(allAdapter);
                 specialrecyclerView.setAdapter(specialAdapter);
 
                 allAdapter.notifyDataSetChanged();
+                specialAdapter.notifyDataSetChanged();
 
                 displayTotalValue(totalValue);
             }

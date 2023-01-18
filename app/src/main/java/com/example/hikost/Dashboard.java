@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class Dashboard extends AppCompatActivity {
+public class Dashboard extends AppCompatActivity{
     Context context = this;
     public TextView txtDashboard, txtBudgeting, txtSavings, txtAccount, totalValueLabel, incomesTotal, expensesTotal, mascotText, summaryTitle;
     public ImageView icDashboard, icBudgeting, icSavings, icAccount, mascotView;
@@ -119,6 +119,30 @@ public class Dashboard extends AppCompatActivity {
 
                 transactionRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false));
                 AdapterTransaction adapterTransaction = new AdapterTransaction(context,transactionArrayList);
+                adapterTransaction.setOnItemClickListener(new AdapterTransaction.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(View v) {
+                        Intent i = new Intent(Dashboard.this, Transaction.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.putExtra("objectLabel","Transaction");
+                        startActivity(i);
+                    }
+
+//                    @Override
+//                    public void onItemClick(View v, String key, String username, String judul, String kategori, String pertanyaan, String date, String star, String path) {
+//                        Intent i = new Intent(HomePage.this, ForumCardPage.class);
+//                        i.putExtra("key",key);
+//                        i.putExtra("username",username);
+//                        i.putExtra("judul",judul);
+//                        i.putExtra("kategori",kategori);
+//                        i.putExtra("pertanyaan",pertanyaan);
+//                        i.putExtra("date",date);
+//                        i.putExtra("star",star);
+//                        i.putExtra("path",path);
+//                        startActivity(i);
+//                    }
+                });
 
 
                 transactionRecyclerView.setAdapter(adapterTransaction);
